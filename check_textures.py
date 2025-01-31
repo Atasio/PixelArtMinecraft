@@ -1,5 +1,5 @@
 import os
-from get_blocs_names import getBlocs
+from get_blocks_names import get_blocks_names
 
 def delete_unusable_png(directory, allowed_names):
     """
@@ -37,7 +37,7 @@ def check_missing_textures(directory, allowed_names):
                 missing_textures.append(name)
     return missing_textures
 
-def blocs_with_textures_only(blocs_names, directory, defaultPosition="side"):
+def blocks_with_textures_only(blocs_names, directory, defaultPosition="side"):
     """
     Retourne uniquement les blocs ayant une texture. Si la texture principale est absente,
     retourne la texture à la position spécifiée.
@@ -61,8 +61,8 @@ def blocs_with_textures_only(blocs_names, directory, defaultPosition="side"):
     return valid_blocs
 
     
-directory_path = "resource/blocks_textures/"
-blocs_names = getBlocs()
+#directory_path = "resource/blocks_textures/"
+#blocs_names = get_blocs_names()
 
 #print(delete_unusable_png(directory_path, blocs_names))
 #print(check_missing_textures(directory_path, blocs_names))
