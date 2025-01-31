@@ -1,6 +1,6 @@
 import minecraft_data
 
-def getBlocs():
+def get_blocs_names():
     mcd = minecraft_data("1.19.2")
     plain_blocs = []
     for b in mcd.blocks_list:
@@ -11,7 +11,7 @@ def getBlocs():
         
 
 if __name__ == "__main__":
-    print(getBlocs())
+    print(get_blocs_names())
 
 
         

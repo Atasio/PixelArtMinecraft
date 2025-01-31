@@ -1,5 +1,5 @@
 import os
-from plainBlocs import getBlocs
+from get_blocs_names import getBlocs
 
 def delete_unusable_png(directory, allowed_names):
     """
@@ -64,4 +64,6 @@ def blocs_with_textures_only(blocs_names, directory, defaultPosition="side"):
 directory_path = "resource/blocks_textures/"
 blocs_names = getBlocs()
 
-print(blocs_with_textures_only(blocs_names, directory_path))
+#print(delete_unusable_png(directory_path, blocs_names))
+#print(check_missing_textures(directory_path, blocs_names))
+#print(blocs_with_textures_only(blocs_names, directory_path))
