@@ -19,23 +19,27 @@ def main():
     blocks_names = get_blocks_names()
     blocks = get_every_blocks(resourcePath, blocks_names)
     
-    newImage = np.ndarray()
-    for p in image.pixels:
-        lowest_distance = sys.maxint
-        for b in blocks:
-            distance  = p.couleurs.distance_de(b.mean_rgb())
-            if (lowest_distance < distance):
-                lowest_distance = distance
-            
+    newImage = Image(np.empty((16 * image.dim[0], 16 * image.dim[1]), dtype=Pixel))
+    for ligne in image.pixels:
+        for p in ligne:
+            lowest_distance = sys.float_info.max
+            fit_block = None
+            for b in blocks:
+                distance  = Vecteur.distance_entre(p.couleurs, b.mean_rgb_value)
+                if (lowest_distance > distance):
+                    lowest_distance = distance
+                    fit_block = b
+            newImage.replace_pixel_by_block(p.position[0], p.position[1], fit_block)
     
-    pass
+    newImage.show()
 
 def get_every_blocks(directory, blocks_names):
     new_blocks = []
     blocks = blocks_with_textures_only(blocks_names, directory)
     for block_name, block_texture in blocks.items():
         filePath = directory + block_texture + ".png"
-        new_blocks.append(Block(block_name, filePath))
+        new_blocks.append(Block(block_name, filePath, Image.lecture(filePath).pixels))
+    return new_blocks
 
 
 if __name__ == "__main__":

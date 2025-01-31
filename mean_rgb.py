@@ -24,4 +24,3 @@ def mean_rgb_from_png(filePath):
 
 
 filePath = "resource/blocks_textures/oak_log.png"
-print(mean_rgb_from_png(filePath))
