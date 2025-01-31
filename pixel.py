@@ -1,6 +1,7 @@
 from vecteur import Vecteur
 
 class Pixel:
+    """Représente un pixel d'une image : une position et une couleur."""
 
     def __init__(self, position: tuple, couleurs: Vecteur):
         self.position = position

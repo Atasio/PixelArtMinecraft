@@ -1,11 +1,10 @@
 from typing import List, Self
 from pixel import Pixel
-
 from matplotlib.image import imread
-
 import numpy as np
 
 class Image:
+    """Représente une image"""
 
     def __init__(self, pixels: np.ndarray[Pixel]):
         self.pixels = pixels
@@ -13,6 +12,16 @@ class Image:
 
 
     def lecture(chemain: str) -> Self:
+        """
+        Lit l'image et la transforme en tableau de Pixels.
+        Permet ensuite de récupérer l'instance de l'image correspondante.
+
+        Args:
+            chemain (str): le chemain dans l'arborescence de fichier de l'image à lire.
+
+        Returns:
+            Self: l'instance de l'image correspondante
+        """
         raw_image = imread(chemain)
         if raw_image.ndim == 2:  # Image en niveaux de gris
         # Répéter la même valeur pour R, G, B

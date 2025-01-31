@@ -4,6 +4,9 @@ import numpy as np
 import os
 
 class Block(Image):
+
+    """Texture d'un block minecraft."""
+
     def __init__(self, nom: str, texture_path, pixels: np.ndarray[Pixel] = None):
         if pixels is not None: super(pixels)
         else: super = Image.lecture(texture_path)
