@@ -45,7 +45,6 @@ class Image:
                 moyenne[1] += p.couleurs.vals[1]
                 moyenne[2] += p.couleurs.vals[2]
         moyenne /= self.pixels.shape[0] * self.pixels.shape[1]
-        print(moyenne)
         return Vecteur(*moyenne)
     
     def replace_pixel_by_block(self, i,j, block):
