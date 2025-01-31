@@ -6,7 +6,7 @@ class Vecteur:
 
     def __init__(self, *valeurs):
         self.dim = len(valeurs)
-        self._l_val = tuple(valeurs)
+        self.vals = valeurs
 
 
     def distance_de(self, vect: Self) -> float:
@@ -42,13 +42,13 @@ class Vecteur:
             raise Exception("La dimention de a et b doivent être la même.")
         dist = .0
         for v_dim in range(a.dim):
-            dist += sqrt(pow(a._l_val[v_dim] - b._l_val[v_dim], 2))
+            dist += sqrt(pow(a.vals[v_dim] - b.vals[v_dim], 2))
         return dist
 
 
     def __str__(self):
-        return f"Vect {self._l_val}"
+        return f"Vect {self.vals}"
 
     
     def __repr__(self):
-        return f"{self._l_val}"
+        return f"{self.vals}"
