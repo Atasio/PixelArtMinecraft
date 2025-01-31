@@ -4,6 +4,7 @@ import numpy as np
 import os
 
 class Block(Image):
+    """Texture d'un block minecraft."""
 
     RESOURCES_PATH = "./assets/img"
 
