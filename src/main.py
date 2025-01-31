@@ -2,7 +2,7 @@ from terminal import *
 from get_blocks_names import get_blocks_names
 from mean_rgb import mean_rgb_from_png
 from check_textures import blocks_with_textures_only
-from block import Block
+from resource.testImg.block import Block
 from image import Image
 from pixel import Pixel
 from vecteur import Vecteur
