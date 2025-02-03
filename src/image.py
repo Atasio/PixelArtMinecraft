@@ -11,6 +11,7 @@ class Image:
     def __init__(self, pixels: np.ndarray):
         self.pixels = pixels
         self.dim = pixels.shape
+        
 
 
     def lecture(chemain: str) -> Self:
@@ -61,6 +62,22 @@ class Image:
                 tab[-1].append(p.couleurs.vals)
         plt.imshow(tab)
         plt.show()
+    
+    def changeResolution(self, length, width):
+        shape = self.dim
+        length0 = shape[0]
+        width0 = shape[1]
+        ratioL  = length0 / length
+        ratioC = width0 / width
+        #print("Ratios : ", ratioL, ratioC)
+        newImage = np.ndarray(shape=(length, width), dtype=Pixel)
+        for row in range(newImage.shape[0]):
+            for column in range(newImage.shape[1]):
+                newImage[row][column] = self.pixels[(int)(row * ratioL)][(int)(column * ratioC)]
+        self.pixels = newImage;
+        self.dim = self.pixels.shape
+        return self;
+        
 
 
     def __str__(self):
