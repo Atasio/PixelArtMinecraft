@@ -49,7 +49,6 @@ def blocks_with_textures_only(blocs_names, directory, defaultPosition="side"):
     """
     existing_names = {os.path.splitext(filename)[0] for filename in os.listdir(directory) if filename.lower().endswith(".png")}
     valid_blocs = {}
-    
     for bloc in blocs_names:
         if bloc in existing_names:
             valid_blocs[bloc] = bloc

@@ -15,7 +15,11 @@ import sys
 def main():
     imageFilePath = sys.argv[1]
     image = Image.lecture(imageFilePath)
-    
+    pov = "side"
+    for i in range(image.pixels.shape[0]):
+        for j in range(image.pixels.shape[1]):
+            image.pixels[i,j].couleurs.vals = (image.pixels[i,j].couleurs.vals[0] / 255, image.pixels[i,j].couleurs.vals[1] / 255, image.pixels[i,j].couleurs.vals[2] / 255,)
+    print(image.pixels)
     argi = 2
     while (argi < len(sys.argv)):
         match sys.argv[argi]:
@@ -25,13 +29,13 @@ def main():
                 image.changeResolution(length, width)
                 argi += 3
             case "-p" | "--point-of-view":
-                if (sys.arv[argi + 1] not in ["side", "top", "bottom"]):
+                if (sys.argv[argi + 1] in ["side", "top", "bottom"]):
                     pov = sys.argv[argi + 1]
                 argi += 2
-        
+    
     resourcePath = "resource/blocks_textures/"
     blocks_names = get_blocks_names()
-    blocks = get_every_blocks(resourcePath, blocks_names)
+    blocks = get_every_blocks(resourcePath, blocks_names, pov)
     newImage = Image(np.empty((16 * image.dim[0], 16 * image.dim[1]), dtype=Pixel))
     i = 0
     j = 0
@@ -51,9 +55,9 @@ def main():
     
     newImage.show()
 
-def get_every_blocks(directory, blocks_names):
+def get_every_blocks(directory, blocks_names, pov):
     new_blocks = []
-    blocks = blocks_with_textures_only(blocks_names, directory)
+    blocks = blocks_with_textures_only(blocks_names, directory, pov)
     for block_name, block_texture in blocks.items():
         filePath = directory + block_texture + ".png"
         new_blocks.append(Block(block_name, filePath, Image.lecture(filePath).pixels))
