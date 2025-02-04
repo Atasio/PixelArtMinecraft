@@ -4,7 +4,8 @@ from matplotlib.image import imread
 import matplotlib.pyplot as plt
 import numpy as np
 from vecteur import Vecteur
-
+from get_blocks_from_resources import get_blocks_names
+import sys
 class Image:
     """Représente une image"""
 
@@ -77,6 +78,7 @@ class Image:
         self.pixels = newImage;
         self.dim = self.pixels.shape
         return self;
+
         
 
 

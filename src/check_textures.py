@@ -1,5 +1,4 @@
 import os
-from get_blocks_names import get_blocks_names
 
 def delete_unusable_png(directory, allowed_names):
     """
