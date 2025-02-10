@@ -94,9 +94,11 @@ class App(tk.Tk):
         # Pour l'instant, on affiche simplement une boîte de dialogue d’information.
         messagebox.showinfo("Lancement de l'algorithme",
                             f"Traitement de l'image '{self.image_path.split('/')[-1]}' avec une résolution de {resolution_x}x{resolution_y}px.")
+        oldImage = Image(self.image.pixels)
         self.image.changeResolution(resolution_x, resolution_y)
         self.minecraftPixelArt = image_generator.createPixelArtMinecraft(self.image)
         self.minecraftPixelArt.show()
+        self.image = oldImage #Reset resolution
         
 
 if __name__ == "__main__":
