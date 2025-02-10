@@ -14,7 +14,7 @@ from image import Image
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Convertisseur d'image en blocks Minecraft")
+        self.title("PixelArtMinecraft")
         self.geometry("600x350")
         self.resizable(False, False)
         self.image_path = None  # Chemin de l'image importée
@@ -51,6 +51,10 @@ class App(tk.Tk):
         algo_button = ttk.Button(main_frame, text="Lancer l'algorithme", command=self.launch_algorithm)
         algo_button.grid(row=4, column=0, columnspan=3, sticky="ew", pady=(20, 0))
 
+        # Text chargement
+        self.text_chargement = ttk.Label(main_frame, text="", wraplength=400)
+        self.text_chargement.grid(row=5, column=0, columnspan=3, sticky="ew", pady=(20, 0))
+
         # Configuration de la répartition des colonnes
         main_frame.columnconfigure(0, weight=1)
         main_frame.columnconfigure(1, weight=2)
@@ -75,6 +79,8 @@ class App(tk.Tk):
             messagebox.showwarning("Avertissement", "Aucune image sélectionnée.")
 
     def launch_algorithm(self):
+        self.text_chargement.config(text=f"Traitement de l'image '{self.image_path.split('/')[-1]}' avec une résolution de {self.resolution_x_entry.get()}x{self.resolution_y_entry.get()}px en cours...")
+
         # Vérifie si une image a bien été importée
         if not self.image_path:
             messagebox.showerror("Erreur", "Veuillez d'abord importer une image.")
@@ -90,14 +96,12 @@ class App(tk.Tk):
             messagebox.showerror("Erreur", "Veuillez entrer des valeurs numériques valides pour la résolution.")
             return
 
-        # Ici, l'algorithme de conversion de l'image en blocks Minecraft serait appelé.
-        # Pour l'instant, on affiche simplement une boîte de dialogue d’information.
-        messagebox.showinfo("Lancement de l'algorithme",
-                            f"Traitement de l'image '{self.image_path.split('/')[-1]}' avec une résolution de {resolution_x}x{resolution_y}px.")
         self.image.changeResolution(resolution_x, resolution_y)
         self.minecraftPixelArt = image_generator.createPixelArtMinecraft(self.image)
         self.minecraftPixelArt.show()
         
+        # Effacer le message après le chargement
+        self.text_chargement.config(text="")
 
 if __name__ == "__main__":
     app = App()
