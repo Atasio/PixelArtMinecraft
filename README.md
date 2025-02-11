@@ -12,6 +12,12 @@ Ensuite, pour ce qui est de la partie "génération de l'image":
 - Pour chaque pixel ou groupe de pixels de l'image d'entrée, nous récupérons la moyenne des niveau de couleur.
 - On créé l'image de sortie en tranformant chaque pixels avec la texture qui possède les niveaux de couleurs les plus proches.
 
+## Usage
+1. Créez un environnement python : `python -m venv .venv`
+2. Activez l'environnement : `source .venv/bin/activate` (bash) ou `.\.venv\Scripts\activate` (pwsh)
+3. Importez les dépendances : `pip install -r ./requirements.txt`
+4. Lancez `python main.py` pour l'application en ligne de commande et `python app.py` pour l'application avec interface graphique.
+
 
 ## Auteurs
 - Loris O.
